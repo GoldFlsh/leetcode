@@ -7,19 +7,19 @@ public class RemoveDuplicatesFromSortedArray {
 
     }
 
-class Solution {
-    public int removeDuplicates(int[] nums) {
-        if (nums.length == 0) return 0;
+    class Solution {
+        public int removeDuplicates(int[] nums) {
+            if (nums.length == 0) return 0;
 
-        int uniqueNumIndex = 0;
-        int lastNum = nums[uniqueNumIndex];
-        for (int i = 1; i < nums.length; i++) {
-            if(nums[i] != lastNum) {
-                nums[++uniqueNumIndex] = nums[i];
-                lastNum = nums[i];
+            int uniqueNumIndex = 0;
+            int lastNum = nums[uniqueNumIndex];
+            for (int i = 1; i < nums.length; i++) {
+                if (nums[i] != lastNum) {
+                    nums[++uniqueNumIndex] = nums[i];
+                    lastNum = nums[i];
+                }
             }
+            return uniqueNumIndex + 1;
         }
-        return uniqueNumIndex+1;
     }
-}
 }
