@@ -3,8 +3,8 @@ package leetcode.top
 import kotlin.math.max
 
 fun main(args: Array<String>) {
-    val randomString: String = "baba";
-    print(randomString + " " + LongestSubstringWithoutRepeatingCharacters().lengthOfLongestSubstring(randomString))
+    val randomString: String = "baba"
+    print(randomString + " " + LongestPalindromicSubstring().lengthOfLongestSubstring(randomString))
 }
 
 class LongestPalindromicSubstring {
@@ -17,18 +17,12 @@ class LongestPalindromicSubstring {
     }
 
     private tailrec fun helper(str: String, leftIndex: Int, rightIndex: Int, max: Int): Int {
-        return when {
-            rightIndex >= str.length + 1 -> max
-            rightIndex >= str.length && isPalindromic(str.substring(leftIndex)) ->
-                helper(str, leftIndex, rightIndex + 1, max(rightIndex - leftIndex, max))
-            isPalindromic(str.substring(leftIndex, rightIndex)) ->
-                helper(str, leftIndex, rightIndex + 1, max(rightIndex - leftIndex, max))
-            else -> helper(str, leftIndex + 1, leftIndex + 2, max)
-        }
+        return 0
     }
 
     private fun isPalindromic(str: String): Boolean {
         return when {
+            str.length == 1 -> true
             isOddLength(str) -> str.substring(0, medianIndexOf(str)) == str.substring(medianIndexOf(str + 1)).reversed()
             else -> str.substring(0, medianIndexOf(str + 1)) == str.substring(medianIndexOf(str + 1)).reversed()
         }
