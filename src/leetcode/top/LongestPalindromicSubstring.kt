@@ -4,20 +4,23 @@ import kotlin.math.max
 
 fun main(args: Array<String>) {
     val randomString: String = "baba"
-    print(randomString + " " + LongestPalindromicSubstring().lengthOfLongestSubstring(randomString))
+    print(randomString + " " + LongestPalindromicSubstring().longestPalindrome(randomString))
 }
 
 class LongestPalindromicSubstring {
-    fun lengthOfLongestSubstring(str: String): Int {
+    fun longestPalindrome(str: String): Int {
         return when {
             str.length == 1 -> 1
             str.isEmpty() -> 0
-            else -> helper(str, 0, 1, 0)
+            else -> longestPalindromeHelper(str)
         }
     }
 
-    private tailrec fun helper(str: String, leftIndex: Int, rightIndex: Int, max: Int): Int {
-        return 0
+    private fun longestPalindromeHelper(str: String): Int {
+        return when {
+            isPalindromic(str) -> str.length
+            else -> max(longestPalindrome(str.substring(1)), longestPalindrome(str.substring(0,str.length-1)))
+        }
     }
 
     private fun isPalindromic(str: String): Boolean {
@@ -29,7 +32,7 @@ class LongestPalindromicSubstring {
     }
 
     private fun isOddLength(str: String): Boolean {
-        return str.length % 2 == 0
+        return str.length % 2 == 1
     }
 
     /**
