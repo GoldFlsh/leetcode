@@ -3,23 +3,27 @@ package leetcode.top
 import kotlin.math.max
 
 fun main(args: Array<String>) {
-    val randomString: String = "baba"
+    val randomString: String = "babaddtattarrattatddetartrateedredividerb"
     print(randomString + " " + LongestPalindromicSubstring().longestPalindrome(randomString))
 }
 
 class LongestPalindromicSubstring {
-    fun longestPalindrome(str: String): Int {
+    fun longestPalindrome(str: String): String {
         return when {
-            str.length == 1 -> 1
-            str.isEmpty() -> 0
+            str.length == 1 -> str
+            str.isEmpty() -> str
             else -> longestPalindromeHelper(str)
         }
     }
 
-    private fun longestPalindromeHelper(str: String): Int {
+    private fun longestPalindromeHelper(str: String): String {
         return when {
-            isPalindromic(str) -> str.length
-            else -> max(longestPalindrome(str.substring(1)), longestPalindrome(str.substring(0,str.length-1)))
+            isPalindromic(str) -> str
+            else -> {
+                val palindromeRight = longestPalindromeHelper(str.substring(1))
+                val palindromeLeft = longestPalindromeHelper(str.substring(0, str.length-1))
+                return if(palindromeLeft.length > palindromeRight.length) palindromeLeft else palindromeRight
+            }
         }
     }
 
