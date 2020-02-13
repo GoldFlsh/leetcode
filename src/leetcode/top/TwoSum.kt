@@ -1,6 +1,6 @@
 package leetcode.top
 
-fun main (args: Array<String>) {
+fun main() {
 
 }
 
