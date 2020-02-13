@@ -22,6 +22,6 @@ class ReverseInteger {
         }
 }
 
-private fun Int.print(): Unit {
+private fun Int.print() {
     println(this)
 }
