@@ -16,4 +16,15 @@ class Solution {
         }
         return intArrayOf()
     }
+
+    fun twoSum2(nums: IntArray, target: Int): IntArray {
+        val context: HashMap<Int, Int> = HashMap()
+        for ((index, num) in nums.withIndex()) {
+            val compliment: Int = target - num
+            if(context.containsKey(compliment)) return intArrayOf(context[compliment]!!, index)
+
+            context[num] = index
+        }
+        return intArrayOf()
+    }
 }
